@@ -72,13 +72,28 @@
     const params = new URLSearchParams(window.location.search);
     const showErrors = params.get('fromValidation') === '1';
 
+    const coverageErrorIcon = document.getElementById('coverageErrorIcon');
+    const dictionaryErrorIcon = document.getElementById('dictionaryErrorIcon');
+    const coverageInput = document.getElementById('coverageInput');
+    const dictionaryInput = document.getElementById('dictionaryInput');
+    const coverageErrorNote = document.getElementById('coverageErrorNote');
+    const dictionaryErrorNote = document.getElementById('dictionaryErrorNote');
+
     if (showErrors) {
-      document.getElementById('coverageErrorIcon').classList.remove('is-hidden');
-      document.getElementById('dictionaryErrorIcon').classList.remove('is-hidden');
-      document.getElementById('coverageInput').classList.add('field-error-input');
-      document.getElementById('dictionaryInput').classList.add('field-error-input');
-      document.getElementById('coverageErrorNote').classList.remove('is-hidden');
-      document.getElementById('dictionaryErrorNote').classList.remove('is-hidden');
+      coverageErrorIcon.classList.remove('is-hidden');
+      dictionaryErrorIcon.classList.remove('is-hidden');
+      coverageInput.classList.add('field-error-input');
+      dictionaryInput.classList.add('field-error-input');
+      coverageErrorNote.classList.remove('is-hidden');
+      dictionaryErrorNote.classList.remove('is-hidden');
+    } else {
+      // Defensive reset: never show validation errors on first entry.
+      coverageErrorIcon.classList.add('is-hidden');
+      dictionaryErrorIcon.classList.add('is-hidden');
+      coverageInput.classList.remove('field-error-input');
+      dictionaryInput.classList.remove('field-error-input');
+      coverageErrorNote.classList.add('is-hidden');
+      dictionaryErrorNote.classList.add('is-hidden');
     }
   </script>
 </body>
