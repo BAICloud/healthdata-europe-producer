@@ -42,17 +42,20 @@
     <section class="visible prototype-grid" style="grid-template-columns: 1fr;">
       <article class="prototype-card">
         <h3>Metadata Form</h3>
-                <label>Dataset title <span class="field-help" data-tooltip="Used to identify this dataset in the governance queue and catalog.">?</span></label>
+
+        <label>Dataset title <span class="field-help" data-tooltip="Used to identify this dataset in the governance queue and catalog.">?</span></label>
         <input type="text" value="Cardiology admissions 2022-2024" />
 
-        <label>Coverage period <span class="field-error-icon" aria-hidden="true">!</span><span class="field-help" data-tooltip="Validation issue: date format is inconsistent. Please use one date format.">?</span></label>
-        <input class="field-error-input" type="text" value="Jan 2022 - Dec 2024" /><p class="field-error-note">Date format inconsistent. Use a single format across all rows.</p>
+        <label>Coverage period <span id="coverageErrorIcon" class="field-error-icon is-hidden" aria-hidden="true">!</span><span class="field-help" data-tooltip="Validation issue: date format is inconsistent. Please use one date format.">?</span></label>
+        <input id="coverageInput" type="text" value="Jan 2022 - Dec 2024" />
+        <p id="coverageErrorNote" class="field-error-note is-hidden">Date format inconsistent. Use a single format across all rows.</p>
 
         <label>Patient count <span class="field-help" data-tooltip="Used to estimate data scale, sensitivity level, and access scope.">?</span></label>
         <input type="text" value="48,200" />
 
-        <label>Data dictionary link <span class="field-error-icon" aria-hidden="true">!</span><span class="field-help" data-tooltip="Validation issue: some columns are missing codebook descriptions.">?</span></label>
-        <input class="field-error-input" type="text" value="https://hospital.example.org/data-dictionary" /><p class="field-error-note">2 columns are missing codebook descriptions.</p>
+        <label>Data dictionary link <span id="dictionaryErrorIcon" class="field-error-icon is-hidden" aria-hidden="true">!</span><span class="field-help" data-tooltip="Validation issue: some columns are missing codebook descriptions.">?</span></label>
+        <input id="dictionaryInput" type="text" value="https://hospital.example.org/data-dictionary" />
+        <p id="dictionaryErrorNote" class="field-error-note is-hidden">2 columns are missing codebook descriptions.</p>
 
         <div class="cta-buttons" style="justify-content:space-between;">
           <a class="btn btn-secondary" href="upload-step-1.html">Back</a>
@@ -63,6 +66,20 @@
   </main>
 
   <footer><div class="footer-container"><div class="footer-bottom">© 2025 HealthData Europe</div></div></footer>
-  <script>document.querySelectorAll('section').forEach(s=>s.classList.add('visible'));</script>
+  <script>
+    document.querySelectorAll('section').forEach(s=>s.classList.add('visible'));
+
+    const params = new URLSearchParams(window.location.search);
+    const showErrors = params.get('fromValidation') === '1';
+
+    if (showErrors) {
+      document.getElementById('coverageErrorIcon').classList.remove('is-hidden');
+      document.getElementById('dictionaryErrorIcon').classList.remove('is-hidden');
+      document.getElementById('coverageInput').classList.add('field-error-input');
+      document.getElementById('dictionaryInput').classList.add('field-error-input');
+      document.getElementById('coverageErrorNote').classList.remove('is-hidden');
+      document.getElementById('dictionaryErrorNote').classList.remove('is-hidden');
+    }
+  </script>
 </body>
 </html>
