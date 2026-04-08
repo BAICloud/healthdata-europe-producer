@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Flow Step 3 | HealthData Europe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">HealthData Europe</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="btn-demo">Request Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-content prototype-page">
+    <section class="services-intro visible">
+      <h2 class="section-title">Upload Clinical Dataset</h2>
+      <p class="section-desc">Step 3 of 4: validation result is generated automatically after Step 2 metadata submission.</p>
+    </section>
+
+    <section class="visible prototype-steps-wrap">
+      <div class="prototype-steps">
+        <div class="prototype-step"><span>1</span><p>Select Dataset</p></div>
+        <div class="prototype-step"><span>2</span><p>Add Metadata</p></div>
+        <div class="prototype-step active"><span>3</span><p>Compliance Check</p></div>
+        <div class="prototype-step"><span>4</span><p>Submit & Track</p></div>
+      </div>
+    </section>
+
+    <section class="visible prototype-grid" style="grid-template-columns: 1fr; max-width: 860px; margin-left: auto; margin-right: auto;">
+      <article class="prototype-card">
+        <h3>Validation Result</h3>
+        <div class="prototype-status warning">Status: Needs minor fixes</div>
+        <ul class="prototype-bullets prototype-issues">
+          <li><span class="issue-icon" aria-hidden="true">!</span> 2 columns missing codebook descriptions</li>
+          <li><span class="issue-icon" aria-hidden="true">!</span> Date field format inconsistent in 1.3% rows</li>
+          <li>No direct identifiers detected</li>
+        </ul>
+
+        <div class="cta-buttons" style="justify-content:space-between; margin-top:1rem;">
+          <a class="btn btn-secondary" href="upload-step-2.html">Back to Edit</a>
+          <a class="btn btn-primary" href="upload-step-4.html">Next Step</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container"><div class="footer-bottom">© 2025 HealthData Europe</div></div>
+  </footer>
+
+  <script>document.querySelectorAll('section').forEach(s => s.classList.add('visible'));</script>
+</body>
+</html>
